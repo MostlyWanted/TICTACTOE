@@ -1,0 +1,46 @@
+.cell {
+  background-color: white;
+  color:black;
+  height: 50; 
+  width: 30;
+  font-size: 64px;
+  display: inline-block;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.left {
+  border-right: 5px solid black;
+ 
+}
+.right{
+  border-left: 5px solid black;
+
+}
+table {
+  border-collapse: collapse;
+}
+
+td {
+  font-size: 50px;
+}
+
+tr {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.top {
+  border-bottom: 4px solid black;
+  border-radius: 3px;
+}
+
+.bottom {
+  border-top: 4px solid black;
+  border-radius: 3px;
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (min-width: 900px) {
+  .split {
+    display: inline-block;
+  }
+}
