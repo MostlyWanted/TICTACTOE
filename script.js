@@ -37,7 +37,6 @@ function cellFiller(z) {
     z.target.innerText = whosTurnIsIt;
     itsYourTurn(); 
   }
-  
 }
 
 function itsYourTurn() {
