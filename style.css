@@ -17,10 +17,11 @@ table {
 
 td {
   font-size: 50px;
+  padding: 40px;
 }
 
 tr {
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Syne Mono', monospace;
 }
 
 section {

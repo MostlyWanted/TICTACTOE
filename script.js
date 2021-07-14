@@ -29,12 +29,17 @@ check is there a winner? repeat last two until done
 let whosTurnIsIt = 'X'; //or gamertag
 
 //try to change a cell from empty to x then o;
-const cell1 = document.querySelector(".top.left");
-cell1.addEventListener('click', cellFiller)
+// const cell1 = document.querySelector(".top.left");
 
-function cellFiller(z) {
-  if (z.target.innerText === '') {
-    z.target.innerText = whosTurnIsIt;
+// cell1.addEventListener('click', cellFiller)
+
+//try to target the table and use event bubbling
+const wholeTable = document.querySelector("table");
+wholeTable.addEventListener('click', cellFiller )
+
+function cellFiller(mouseClick) {
+  if (mouseClick.target.innerHTML === '&nbsp; &nbsp; &nbsp;') {
+    mouseClick.target.innerHTML = `&nbsp; ${whosTurnIsIt} &nbsp;`;
     itsYourTurn(); 
   }
 }
