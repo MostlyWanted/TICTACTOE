@@ -35,15 +35,27 @@ wholeTable.addEventListener('click', cellFiller )
 
 // cache-ing rows
 
-const row1 = document.querySelectorAll(".top")
-      row2 = document.querySelectorAll('.mid')
-      row3 = document.querySelectorAll('.bottom')
-      col1 = document.querySelectorAll('.left')
-      col2 = document.querySelectorAll('.center')
-      col3 = document.querySelectorAll('.right')
-      dia1 = document.querySelectorAll('.mid')
-      dia2 = document.querySelectorAll('.mid')
-      
+const row1 = document.querySelectorAll(".top"),
+      row2 = document.querySelectorAll('.mid'),
+      row3 = document.querySelectorAll('.bottom'),
+      col1 = document.querySelectorAll('.left'),
+      col2 = document.querySelectorAll('.center'),
+      col3 = document.querySelectorAll('.right'),
+      dia1 = document.querySelectorAll('.dia1'),
+      dia2 = document.querySelectorAll('.dia2');
+//  winningCombinations =[]     
+//  winningCombinations.push(document.querySelectorAll(".top"))
+const winningCombinations = [
+  row1, // winningCombinations[0]
+  row2,
+  row3,
+  col1,
+  col2,
+  col3,
+  dia1,
+  dia2,
+]
+
 // // need a service that does: for every cell in *row* .push() the .innerText to an array, like row1Arr;
 //   // initialize arrays
 // let row1Arr = [],
@@ -60,7 +72,11 @@ const row1 = document.querySelectorAll(".top")
 function cellFiller(mouseClick) {
   if (mouseClick.target.innerHTML === "") {
     mouseClick.target.innerHTML = whosTurnIsIt;
-    isThereAWinner();  // check if there is a winner
+    let winningCellCombo = winningCombinations.forEach( (combo) => {
+        let winCombo = isThereAWinner(combo);
+        return winCombo;
+    });
+    console.log(`Winning combo is ${winningCellCombo}`)
     itsYourTurn();
   }
 }
@@ -74,16 +90,41 @@ function itsYourTurn() {
   }
 }
 
+5
 
-
-function isThereAWinner(threeCells) {
+function isThereAWinner(threeCellsInARow) {
   //if every cell in top row is X or 
-  if (
-  (row1.every(cell => (cell === 'X')||(cell === 'O')))||(row2.every(cell => (cell === 'X')||(cell === 'O')))||(row3.every(cell => (cell === 'X')||(cell === 'O')))||(col1.every(cell => (cell === 'X')||(cell === 'O')))||(col2.every(cell => (cell === 'X')||(cell === 'O')))||(col3.every(cell => (cell === 'X')||(cell === 'O')))||(dia1.every(cell => (cell === 'X')||(cell === 'O')))||(dia2.every(cell => (cell === 'X')||(cell === 'O'))) ) {
-  const isAWinner = whosTurnIsIt;
-  console.log(`${isAWinner} is the winner!!!`);
-  } 
+  // threeCellsInARow 
+  let ourThreeCells = [];
+  threeCellsInARow.forEach(cell => {
+    if ((cell.innerText === 'X')||(cell.innerText === 'O')) {
+      ourThreeCells.push(cell.innerText);
+      // console.log(ourThreeCells)
+      if (ourThreeCells.length ===3){
+        if (ourThreeCells.every( cell => (cell === 'X'))) {
+        // console.log(ourThreeCells)
+        console.log(threeCellsInARow)
+        return threeCellsInARow
+        }  else if (ourThreeCells.every( cell => (cell === 'O'))) {
+          // console.log(ourThreeCells)
+        console.log(threeCellsInARow)
+        return threeCellsInARow
+        }
+      }
+    }
+  })
+  // threeCellsInARow.every((cell => (cell === 'X')||(cell === 'O')));
+//   if (threeCellsInARow.forEach(cell => (cell.innerText === 'X')||(cell.innerText === 'O'))) {
+//     return threeCellsInARow;
+//   }
 }
+
+//   if (
+//   (row1.every(cell => (cell === 'X')||(cell === 'O')))||(row2.every(cell => (cell === 'X')||(cell === 'O')))||(row3.every(cell => (cell === 'X')||(cell === 'O')))||(col1.every(cell => (cell === 'X')||(cell === 'O')))||(col2.every(cell => (cell === 'X')||(cell === 'O')))||(col3.every(cell => (cell === 'X')||(cell === 'O')))||(dia1.every(cell => (cell === 'X')||(cell === 'O')))||(dia2.every(cell => (cell === 'X')||(cell === 'O'))) ) {
+//   const isAWinner = whosTurnIsIt;
+//   console.log(`${isAWinner} is the winner!!!`);
+//   } 
+// }
 
 
 
