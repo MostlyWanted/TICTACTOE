@@ -90,7 +90,7 @@ function itsYourTurn() {
   }
 }
 
-5
+
 
 function isThereAWinner(threeCellsInARow) {
   //if every cell in top row is X or 
