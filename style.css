@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 /* Getting secondary font */
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
@@ -11,17 +14,22 @@ h1{
   font-size: 22px;
 }
 table {
+  display: grid;
   border-collapse: collapse;
   margin: 0 auto;
 }
 
+
 td {
-  font-size: 50px;
-  padding: 40px;
+  padding: 0 0 0 45px;
+  /* margin: 0 0 0 20px; */
+  width: 150px;
+  height: 150px;
+  font-size: 100px;
 }
 
 tr {
-  font-family: 'Syne Mono', monospace;
+  font-family: 'Permanent Marker', cursive;
 }
 
 section {
@@ -67,7 +75,7 @@ button {
 }
 
 /* On screens that are wider than 900px, shift button display to side */
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 768px) {
   .split {
     display: inline-block;
     margin: 0 auto;
@@ -78,3 +86,4 @@ button {
     position: absolute;
   }
 }
+

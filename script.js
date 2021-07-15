@@ -28,22 +28,44 @@ check is there a winner? repeat last two until done
 // A state variable
 let whosTurnIsIt = 'X'; //or gamertag
 
-//try to change a cell from empty to x then o;
-// const cell1 = document.querySelector(".top.left");
-
-// cell1.addEventListener('click', cellFiller)
-
 //try to target the table and use event bubbling
 const wholeTable = document.querySelector("table");
+
 wholeTable.addEventListener('click', cellFiller )
 
+// cache-ing rows
+
+const row1 = document.querySelectorAll(".top")
+      row2 = document.querySelectorAll('.mid')
+      row3 = document.querySelectorAll('.bottom')
+      col1 = document.querySelectorAll('.left')
+      col2 = document.querySelectorAll('.center')
+      col3 = document.querySelectorAll('.right')
+      dia1 = document.querySelectorAll('.mid')
+      dia2 = document.querySelectorAll('.mid')
+      
+// // need a service that does: for every cell in *row* .push() the .innerText to an array, like row1Arr;
+//   // initialize arrays
+// let row1Arr = [],
+//     row2Arr = [],
+//     row3Arr = [],
+//     col1Arr = [],
+//     col2Arr = [],
+//     col3Arr = [],
+//     dia1Arr = [],
+//     dia2Arr = [];
+
+
+// this is a render function
 function cellFiller(mouseClick) {
-  if (mouseClick.target.innerHTML === '&nbsp; &nbsp; &nbsp;') {
-    mouseClick.target.innerHTML = `&nbsp; ${whosTurnIsIt} &nbsp;`;
-    itsYourTurn(); 
+  if (mouseClick.target.innerHTML === "") {
+    mouseClick.target.innerHTML = whosTurnIsIt;
+    isThereAWinner();  // check if there is a winner
+    itsYourTurn();
   }
 }
 
+//
 function itsYourTurn() {
   if (whosTurnIsIt === 'X') {
     whosTurnIsIt = 'O';
@@ -54,7 +76,14 @@ function itsYourTurn() {
 
 
 
-
+function isThereAWinner(threeCells) {
+  //if every cell in top row is X or 
+  if (
+  (row1.every(cell => (cell === 'X')||(cell === 'O')))||(row2.every(cell => (cell === 'X')||(cell === 'O')))||(row3.every(cell => (cell === 'X')||(cell === 'O')))||(col1.every(cell => (cell === 'X')||(cell === 'O')))||(col2.every(cell => (cell === 'X')||(cell === 'O')))||(col3.every(cell => (cell === 'X')||(cell === 'O')))||(dia1.every(cell => (cell === 'X')||(cell === 'O')))||(dia2.every(cell => (cell === 'X')||(cell === 'O'))) ) {
+  const isAWinner = whosTurnIsIt;
+  console.log(`${isAWinner} is the winner!!!`);
+  } 
+}
 
 
 
