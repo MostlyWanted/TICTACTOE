@@ -42,7 +42,8 @@ const row1 = document.querySelectorAll(".top"),
       col2 = document.querySelectorAll('.center'),
       col3 = document.querySelectorAll('.right'),
       dia1 = document.querySelectorAll('.dia1'),
-      dia2 = document.querySelectorAll('.dia2');
+      dia2 = document.querySelectorAll('.dia2'),
+      turn = document.querySelector('span');
 //  winningCombinations =[]     
 //  winningCombinations.push(document.querySelectorAll(".top"))
 const winningCombinations = [
@@ -85,8 +86,10 @@ function cellFiller(mouseClick) {
 function itsYourTurn() {
   if (whosTurnIsIt === 'X') {
     whosTurnIsIt = 'O';
+    turn.innerText = 'O';
   } else if (whosTurnIsIt === 'O') {
     whosTurnIsIt = 'X';
+    turn.innerText = 'X';
   }
 }
 
@@ -104,11 +107,14 @@ function isThereAWinner(threeCellsInARow) {
         if (ourThreeCells.every( cell => (cell === 'X'))) {
         // console.log(ourThreeCells)
         console.log(threeCellsInARow)
-        return threeCellsInARow
-        }  else if (ourThreeCells.every( cell => (cell === 'O'))) {
+        wholeTable.removeEventListener("click", cellFiller);
+        return threeCellsInARow // somebody won
+      }  else if (ourThreeCells.every( cell => (cell === 'O'))) {
           // console.log(ourThreeCells)
-        console.log(threeCellsInARow)
-        return threeCellsInARow
+          console.log(threeCellsInARow)
+          wholeTable.removeEventListener("click", cellFiller);
+        return threeCellsInARow; // someobody win
+
         }
       }
     }
