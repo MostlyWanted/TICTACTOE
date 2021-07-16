@@ -10,7 +10,8 @@
 body {
   background-image: url("https://wallpapercave.com/wp/wp7693528.jpg");
   /* background-size: fill; */
-  background-size: 100%;
+  background-size: auto;
+  background-size: fill;
   background-repeat: no-repeat;
 }
 
@@ -96,7 +97,9 @@ button {
 
 div {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 /* On screens that are wider than 900px, shift button display to side */
@@ -115,7 +118,8 @@ div {
   body {
     background-image: url("https://wallpaperaccess.com/full/4199072.jpg");
     /* background-size: fill; */
-    background-size: 100%;
+    background-size: auto;
+
     background-repeat: no-repeat;
   }
 }
