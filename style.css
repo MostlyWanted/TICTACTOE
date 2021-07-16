@@ -2,23 +2,39 @@
   box-sizing: border-box;
 }
 /* Getting secondary font */
-@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+@import url("https://www.chromethemer.com/download/hd-wallpapers/chalkboard-3840x2160.jpg");
+@import url("https://i.pinimg.com/originals/34/6e/73/346e73fa85fbc021939576a834fd7e42.jpg");
+@import url("https://wallpaperaccess.com/full/4199072.jpg");
+
+body {
+  background-image: url("https://wallpapercave.com/wp/wp7693528.jpg");
+  /* background-size: fill; */
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 
 header {
   width: 50vw;
   margin: 0 0 2em 1em;
 }
 
-h1{
-  font-family: 'Kaushan Script', cursive;
-  font-size: 22px;
+h1 {
+  /* font-family: 'Kaushan Script', cursive; */
+  font-family: "Festive", cursive;
+  font-size: 50px;
+  color: white;
 }
+
+h4 {
+  font-size: 35px;
+}
+
 table {
   display: grid;
   border-collapse: collapse;
   margin: 0 auto;
 }
-
 
 td {
   padding: 0 0 0 45px;
@@ -29,7 +45,8 @@ td {
 }
 
 tr {
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
+  color: white;
 }
 
 section {
@@ -41,37 +58,45 @@ section {
   width: 220px;
   margin: 0 auto;
   padding: 1em 0 0 3em;
-  font-family: 'Kaushan Script', cursive;
+  /* font-family: 'Kaushan Script', cursive; */
+  font-family: "Festive", cursive;
   font-size: 16px;
+  color: white;
 }
 
 button {
   margin: 0 42px;
   padding: 1em 1.5em;
-  border: solid 2px black;
+  border: solid 2px white;
   border-radius: 32px;
   background-color: white;
-  font-family: 'Kaushan Script', cursive;
+  /* font-family: 'Kaushan Script', cursive; */
+  font-family: "Festive", cursive;
   font-size: 16px;
+  color: black;
 }
 
 .top {
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid white;
   border-radius: 3px;
 }
 
 .bottom {
-  border-top: 4px solid black;
+  border-top: 4px solid white;
   border-radius: 3px;
 }
 
-
 .left {
-  border-right: 5px solid black;
- 
+  border-right: 5px solid white;
 }
-.right{
-  border-left: 5px solid black;
+
+.right {
+  border-left: 5px solid white;
+}
+
+div {
+  display: flex;
+  justify-content: center;
 }
 
 /* On screens that are wider than 900px, shift button display to side */
@@ -84,6 +109,13 @@ button {
   .buttons {
     height: 200px;
     position: absolute;
+    color: white;
+  }
+
+  body {
+    background-image: url("https://wallpaperaccess.com/full/4199072.jpg");
+    /* background-size: fill; */
+    background-size: 100%;
+    background-repeat: no-repeat;
   }
 }
-

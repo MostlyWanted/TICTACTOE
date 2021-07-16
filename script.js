@@ -19,21 +19,27 @@ check is there a winner? repeat last two until done
 ******celebrate!!!!!!!
 */
 //register gamertag
-
+let button = document.querySelector('button');
 
 // const gamerTag1 = prompt("Please enter gamertag for player X:"),
 //       gamerTag2 = prompt("Please enter gamertag for player O:");
 
+button.addEventListener('click', resetGame);
+
+function resetGame() {
+  location.reload();
+}
 
 // A state variable
 let whosTurnIsIt = 'X'; //or gamertag
 
-//try to target the table and use event bubbling
+
+
+//  target the table and use event bubbling
 const wholeTable = document.querySelector("table");
 
 wholeTable.addEventListener('click', cellFiller )
 
-// cache-ing rows
 
 const row1 = document.querySelectorAll(".top"),
       row2 = document.querySelectorAll('.mid'),
@@ -43,11 +49,12 @@ const row1 = document.querySelectorAll(".top"),
       col3 = document.querySelectorAll('.right'),
       dia1 = document.querySelectorAll('.dia1'),
       dia2 = document.querySelectorAll('.dia2'),
-      turn = document.querySelector('span');
-//  winningCombinations =[]     
-//  winningCombinations.push(document.querySelectorAll(".top"))
+      turn = document.querySelector('span'),
+      message = document.querySelector('h4');
+
+
 const winningCombinations = [
-  row1, // winningCombinations[0]
+  row1, 
   row2,
   row3,
   col1,
@@ -57,32 +64,18 @@ const winningCombinations = [
   dia2,
 ]
 
-// // need a service that does: for every cell in *row* .push() the .innerText to an array, like row1Arr;
-//   // initialize arrays
-// let row1Arr = [],
-//     row2Arr = [],
-//     row3Arr = [],
-//     col1Arr = [],
-//     col2Arr = [],
-//     col3Arr = [],
-//     dia1Arr = [],
-//     dia2Arr = [];
 
-
-// this is a render function
 function cellFiller(mouseClick) {
   if (mouseClick.target.innerHTML === "") {
     mouseClick.target.innerHTML = whosTurnIsIt;
-    let winningCellCombo = winningCombinations.forEach( (combo) => {
-        let winCombo = isThereAWinner(combo);
-        return winCombo;
+    winningCombinations.forEach( (combo) => {
+      isThereAWinner(combo);
     });
-    console.log(`Winning combo is ${winningCellCombo}`)
     itsYourTurn();
   }
 }
 
-//
+
 function itsYourTurn() {
   if (whosTurnIsIt === 'X') {
     whosTurnIsIt = 'O';
@@ -96,43 +89,37 @@ function itsYourTurn() {
 
 
 function isThereAWinner(threeCellsInARow) {
-  //if every cell in top row is X or 
-  // threeCellsInARow 
+  // an array to use every method
   let ourThreeCells = [];
   threeCellsInARow.forEach(cell => {
     if ((cell.innerText === 'X')||(cell.innerText === 'O')) {
       ourThreeCells.push(cell.innerText);
-      // console.log(ourThreeCells)
       if (ourThreeCells.length ===3){
         if (ourThreeCells.every( cell => (cell === 'X'))) {
-        // console.log(ourThreeCells)
-        console.log(threeCellsInARow)
-        wholeTable.removeEventListener("click", cellFiller);
-        return threeCellsInARow // somebody won
-      }  else if (ourThreeCells.every( cell => (cell === 'O'))) {
-          // console.log(ourThreeCells)
-          console.log(threeCellsInARow)
           wholeTable.removeEventListener("click", cellFiller);
-        return threeCellsInARow; // someobody win
-
+          highlightWinningCells(threeCellsInARow)
+          winMsg()
+        }  else if (ourThreeCells.every( cell => (cell === 'O'))) {
+          wholeTable.removeEventListener("click", cellFiller);
+          highlightWinningCells(threeCellsInARow)
+          winMsg()          
         }
       }
     }
   })
-  // threeCellsInARow.every((cell => (cell === 'X')||(cell === 'O')));
-//   if (threeCellsInARow.forEach(cell => (cell.innerText === 'X')||(cell.innerText === 'O'))) {
-//     return threeCellsInARow;
-//   }
 }
 
-//   if (
-//   (row1.every(cell => (cell === 'X')||(cell === 'O')))||(row2.every(cell => (cell === 'X')||(cell === 'O')))||(row3.every(cell => (cell === 'X')||(cell === 'O')))||(col1.every(cell => (cell === 'X')||(cell === 'O')))||(col2.every(cell => (cell === 'X')||(cell === 'O')))||(col3.every(cell => (cell === 'X')||(cell === 'O')))||(dia1.every(cell => (cell === 'X')||(cell === 'O')))||(dia2.every(cell => (cell === 'X')||(cell === 'O'))) ) {
-//   const isAWinner = whosTurnIsIt;
-//   console.log(`${isAWinner} is the winner!!!`);
-//   } 
-// }
 
 
+function highlightWinningCells(winCells) {
+  winCells.forEach( (cell) => {
+    cell.setAttribute('style','color: cyan')          
+  })  
+}
+
+function winMsg() {
+  message.innerText = `${whosTurnIsIt}  WON !!!`;
+}
 
 
 
