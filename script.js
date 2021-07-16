@@ -41,7 +41,7 @@ const winningCombinations = [
   dia2,
 ]
 
-let filledCells = 0; // new
+let filledCells = 0;
 
 function cellFiller(mouseClick) {
   if (mouseClick.target.innerHTML === "") {
