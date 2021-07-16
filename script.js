@@ -8,6 +8,7 @@ function resetGame() {
 
 // A state variable
 let whosTurnIsIt = 'X'; 
+let winner = '';
 
 
 
@@ -40,6 +41,7 @@ const winningCombinations = [
   dia2,
 ]
 
+let filledCells = 0; // new
 
 function cellFiller(mouseClick) {
   if (mouseClick.target.innerHTML === "") {
@@ -48,6 +50,10 @@ function cellFiller(mouseClick) {
       isThereAWinner(combo);
     });
     itsYourTurn();
+    filledCells++
+    if ((filledCells === 9)&&(winner ==='')) {
+      tieGame();
+    }
   }
 }
 
@@ -75,11 +81,13 @@ function isThereAWinner(threeCellsInARow) {
           wholeTable.removeEventListener("click", cellFiller);
           highlightWinningCells(threeCellsInARow)
           winMsg()
+          winner = whosTurnIsIt;
         }  else if (ourThreeCells.every( cell => (cell === 'O'))) {
           wholeTable.removeEventListener("click", cellFiller);
           highlightWinningCells(threeCellsInARow)
-          winMsg()          
-        }
+          winMsg()
+          winner = whosTurnIsIt;
+        } 
       }
     }
   })
@@ -97,3 +105,6 @@ function winMsg() {
   message.innerText = `${whosTurnIsIt}  WON !!!`;
 }
 
+function tieGame() {
+  message.innerText = 'TIE GAME';
+}
